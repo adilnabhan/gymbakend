@@ -1,0 +1,10 @@
+django
+ djangorestframework
+ djangorestframework-simplejwt
+ django-cors-headers
+ django-filter
+ drf-spectacular
+ psycopg2-binary
+ pillow
+ django-import-export
+ python-decouple
