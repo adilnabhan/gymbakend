@@ -1,11 +1,13 @@
 django
 gunicorn
- djangorestframework
- djangorestframework-simplejwt
- django-cors-headers
- django-filter
- drf-spectacular
- psycopg2-binary
- pillow
- django-import-export
- python-decouple
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+django-filter
+drf-spectacular
+psycopg2-binary
+pillow
+django-import-export
+python-decouple
+dj-database-url
+whitenoise

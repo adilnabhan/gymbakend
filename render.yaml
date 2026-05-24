@@ -1,11 +1,11 @@
 services:
   - type: web
-    name: discipl-backend-python
+    name: gymbakend-1
     env: python
     region: oregon
     branch: master
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
     startCommand: gunicorn discipl_backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
@@ -13,6 +13,12 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
-        fromDatabase: postgres
+        fromDatabase:
+          name: myproject-db
+          property: connectionString
       - key: ALLOWED_HOSTS
-        value: '*'
+        value: gymbakend-1.onrender.com,localhost
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: "3.12.3"
