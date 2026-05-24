@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: discipl-backend-python
+    env: python
+    region: oregon
+    branch: master
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn discipl_backend.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: discipl_backend.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase: postgres
+      - key: ALLOWED_HOSTS
+        value: '*'
